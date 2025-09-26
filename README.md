@@ -38,7 +38,7 @@ Buka modal dengan:
 ### Modal Livewire (Universal)
 
 ```blade
-<livewire:nawasara-modal.universal-modal />
+<livewire:nawasara-modal.livewire-modal />
 ```
 
 Buka modal Livewire dengan:
