@@ -1,0 +1,34 @@
+{
+    "name": "nawasara/modal",
+    "description": "Reusable modal (Blade & Livewire) for Laravel apps.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "livewire",
+        "laravel",
+        "modal"
+    ],
+    "authors": [
+        {
+            "name": "Pringgo Juni Saputro",
+            "email": "odyinggo@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Nawasara\\Modal\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0",
+        "livewire/livewire": "^3.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Nawasara\\Modal\\ModalServiceProvider"
+            ]
+        }
+    }
+}
