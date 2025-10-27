@@ -1,10 +1,10 @@
 <div x-data="{ open: false }" x-on:open-modal.window="if($event.detail.id === '{{ $id }}') open = true"
-    x-on:close-modal.window="if($event.detail.id === '{{ $id }}') open = false" x-show="open" x-cloak
-    class="fixed inset-0 z-65 flex items-center justify-center">
+    x-on:close-modal.window="console.log('modalnya: ' + $event.detail.id);if($event.detail.id === '{{ $id }}') open = false"
+    x-show="open" x-cloak class="fixed inset-0 z-65 flex items-center justify-center">
 
     <!-- Overlay -->
-    <div class="fixed inset-0 bg-gray-900/60 dark:bg-black/70 transition-opacity" @click="open = false" x-show="open"
-        x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
+    <div class="fixed inset-0 bg-gray-900/60 dark:bg-black/70 transition-opacity backdrop-blur-md" @click="open = false"
+        x-show="open" x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-200"
         x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"></div>
 
@@ -18,7 +18,7 @@
 
         <!-- Header -->
         @if (isset($title))
-            <div class="flex justify-between items-center border-b border-gray-200 dark:border-gray-700 pb-3 mb-4">
+            <div class="flex justify-between items-center pb-3 mb-4">
                 <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ $title }}</h2>
                 <button @click="open = false"
                     class="inline-flex items-center justify-center w-8 h-8 text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none">
