@@ -1,7 +1,17 @@
-<div x-data="{ open: false }"
+<div x-data="{ open: false }" x-init="$watch('open', value => {
+    try {
+        if (value) {
+            document.documentElement.classList.add('overflow-hidden');
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.documentElement.classList.remove('overflow-hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+    } catch (e) {}
+})"
     x-on:open-livewire-modal.window="
         open = true;
-        $wire.load($event.detail)
+        $wire.load($event.detail);
     "
     x-on:close-livewire-modal.window="open = false" x-show="open" x-cloak
     class="fixed inset-0 z-65 flex items-center justify-center bg-gray-900/60 dark:bg-black/70 transition-opacity duration-300 backdrop-blur-md">

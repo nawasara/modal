@@ -1,6 +1,17 @@
-<div x-data="{ open: false }" x-on:open-modal.window="if($event.detail.id === '{{ $id }}') open = true"
-    x-on:close-modal.window="console.log('modalnya: ' + $event.detail.id);if($event.detail.id === '{{ $id }}') open = false"
-    x-show="open" x-cloak class="fixed inset-0 z-65 flex items-center justify-center">
+<div x-data="{ open: false }" x-init="$watch('open', value => {
+    try {
+        if (value) {
+            document.documentElement.classList.add('overflow-hidden');
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.documentElement.classList.remove('overflow-hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+    } catch (e) { /* ignore in non-browser contexts */ }
+})"
+    x-on:open-modal.window="if($event.detail.id === '{{ $id }}') open = true"
+    x-on:close-modal.window="if($event.detail.id === '{{ $id }}') open = false" x-show="open" x-cloak
+    class="fixed inset-0 z-65 flex items-center justify-center">
 
     <!-- Overlay -->
     <div class="fixed inset-0 bg-gray-900/60 dark:bg-black/70 transition-opacity backdrop-blur-md" @click="open = false"
