@@ -1,53 +1,62 @@
 # Nawasara Modal
 
-Reusable modal package for Laravel (Blade & Livewire).
+Reusable Blade and Livewire modal component for Laravel applications.
 
 ## Installation
-
-1. Tambahkan ke composer:
 
 ```bash
 composer require nawasara/modal
 ```
 
-2. Publish views (opsional):
+Auto-discovered. Optionally publish the views to override the defaults:
 
 ```bash
 php artisan vendor:publish --provider="Nawasara\Modal\ModalServiceProvider"
 ```
 
-## Penggunaan
+## Usage
 
-### Modal Blade
+### Blade modal
 
 ```blade
-<x-nawasara-modal::modal id="my-modal" title="Judul Modal">
-    Konten modal di sini
+<x-nawasara-modal::modal id="my-modal" title="Modal Title">
+    Modal content goes here.
+
     <x-slot:footer>
-        <button @click="open = false">Tutup</button>
+        <button @click="open = false">Close</button>
     </x-slot:footer>
 </x-nawasara-modal::modal>
 ```
 
-Buka modal dengan:
+Open the modal from anywhere on the page:
 
 ```html
-<button @click="openModal('my-modal')">Open Modal</button>
+<button @click="openModal('my-modal')">Open modal</button>
 ```
 
-### Modal Livewire (Universal)
+### Livewire modal (universal)
+
+Drop the universal modal once in your layout:
 
 ```blade
 <livewire:nawasara-modal.livewire-modal />
 ```
 
-Buka modal Livewire dengan:
+Then open any Livewire component inside it:
 
 ```js
 openModal({
     id: 'modal-livewire',
-    title: 'Judul',
-    component: 'nama.livewire.component',
-    params: { ... }
+    title: 'Title',
+    component: 'your.livewire.component',
+    params: { /* ... */ }
 });
 ```
+
+## Author
+
+**Pringgo J. Saputro** &lt;odyinggo@gmail.com&gt;
+
+## License
+
+MIT
